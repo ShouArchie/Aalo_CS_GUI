@@ -1,0 +1,27 @@
+screw_cold_spray(
+    robot,
+    length_mm=40,        # how far from “head” to hole along the travel
+    amp_start_mm=8,      # big amplitude at the head
+    amp_end_mm=1.5,      # tight near the hole
+    pitch_mm=3.0,        # thread pitch (distance per cycle)
+    steps_per_cycle=30,  # samples per cycle
+    cycle_s=0.015,
+    lookahead_s=0.2,
+    gain=2500,
+    tilt_start_deg=15,
+    tilt_end_deg=8,
+    axis="x",            # right→left is decreasing X in this setup
+)
+
+
+
+"Tuning notes
+length_mm: set this to the distance from your “head start point” to the leak along the travel axis.
+
+amp_start_mm / amp_end_mm: how wide the weave begins vs. ends. Amp_end_mm should be ≥ your spray footprint radius so the threads “pack” the center.
+
+pitch_mm: smaller pitch = tighter thread spacing (more coverage).
+
+steps_per_cycle: more samples per pitch if you see gaps.
+
+axis: use "x" if right→left is –X in your TCP frame (as in my default). If your jig is rotated, switch to "y""
